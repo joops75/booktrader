@@ -1,0 +1,43 @@
+{
+  "version": 3,
+  "sources": [
+    "user.js"
+  ],
+  "names": [
+    "mongoose",
+    "require",
+    "bcrypt",
+    "userSchema",
+    "Schema",
+    "local",
+    "username",
+    "String",
+    "password",
+    "firstName",
+    "lastName",
+    "city",
+    "state",
+    "country",
+    "email",
+    "books",
+    "Array",
+    "isbns",
+    "requestsTo",
+    "borrowingFrom",
+    "methods",
+    "generateHash",
+    "hashSync",
+    "genSaltSync",
+    "validPassword",
+    "compareSync",
+    "module",
+    "exports",
+    "model"
+  ],
+  "mappings": ";;AAAA,IAAIA,WAAWC,QAAQ,UAAR,CAAf;AACA,IAAIC,SAASD,QAAQ,eAAR,CAAb;;AAEA,IAAIE,aAAaH,SAASI,MAAT,CAAgB;AAC/BC,SAAO;AACLC,cAAUC,MADL;AAELC,cAAUD,MAFL;AAGLE,eAAWF,MAHN;AAILG,cAAUH,MAJL;AAKLI,UAAMJ,MALD;AAMLK,WAAOL,MANF;AAOLM,aAASN,MAPJ;AAQLO,WAAOP,MARF;AASLQ,WAAOC,KATF;AAULC,WAAOD,KAVF;AAWLE,gBAAYF,KAXP;AAYLG,mBAAeH;AAZV;AADwB,CAAhB,CAAjB;;AAiBAb,WAAWiB,OAAX,CAAmBC,YAAnB,GAAkC,UAASb,QAAT,EAAmB;AACnD,SAAON,OAAOoB,QAAP,CAAgBd,QAAhB,EAA0BN,OAAOqB,WAAP,CAAmB,CAAnB,CAA1B,EAAiD,IAAjD,CAAP;AACD,CAFD;;AAIApB,WAAWiB,OAAX,CAAmBI,aAAnB,GAAmC,UAAShB,QAAT,EAAmB;AACpD,SAAON,OAAOuB,WAAP,CAAmBjB,QAAnB,EAA6B,KAAKH,KAAL,CAAWG,QAAxC,CAAP;AACD,CAFD;;AAIAkB,OAAOC,OAAP,GAAiB3B,SAAS4B,KAAT,CAAe,MAAf,EAAuBzB,UAAvB,CAAjB",
+  "file": "user.js",
+  "sourceRoot": "../../../src/app/models",
+  "sourcesContent": [
+    "var mongoose = require('mongoose')\r\nvar bcrypt = require('bcrypt-nodejs')\r\n\r\nvar userSchema = mongoose.Schema({\r\n  local: {\r\n    username: String,\r\n    password: String,\r\n    firstName: String,\r\n    lastName: String,\r\n    city: String,\r\n    state: String,\r\n    country: String,\r\n    email: String,\r\n    books: Array,\r\n    isbns: Array,\r\n    requestsTo: Array,\r\n    borrowingFrom: Array\r\n  }\r\n})\r\n\r\nuserSchema.methods.generateHash = function(password) {\r\n  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)\r\n}\r\n\r\nuserSchema.methods.validPassword = function(password) {\r\n  return bcrypt.compareSync(password, this.local.password)\r\n}\r\n\r\nmodule.exports = mongoose.model('User', userSchema)\r\n"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "version": 3,
+  "sources": [
+    "server.js"
+  ],
+  "names": [
+    "express",
+    "require",
+    "app",
+    "port",
+    "process",
+    "env",
+    "PORT",
+    "mongoose",
+    "Promise",
+    "global",
+    "passport",
+    "flash",
+    "morgan",
+    "bodyParser",
+    "session",
+    "load",
+    "connect",
+    "MONGO_URI",
+    "useMongoClient",
+    "use",
+    "urlencoded",
+    "extended",
+    "static",
+    "__dirname",
+    "set",
+    "secret",
+    "resave",
+    "saveUninitialized",
+    "initialize",
+    "listen"
+  ],
+  "mappings": ";;AAAA,IAAIA,UAAWC,QAAQ,SAAR,CAAf;AACA,IAAIC,MAAMF,SAAV;AACA,IAAIG,OAASC,QAAQC,GAAR,CAAYC,IAAZ,IAAoB,IAAjC;AACA,IAAIC,WAAWN,QAAQ,UAAR,CAAf;AACEM,SAASC,OAAT,GAAmBC,OAAOD,OAA1B;AACF,IAAIE,WAAWT,QAAQ,UAAR,CAAf;AACA,IAAIU,QAASV,QAAQ,eAAR,CAAb;;AAEA,IAAIW,SAASX,QAAQ,QAAR,CAAb;AACA,IAAIY,aAAaZ,QAAQ,aAAR,CAAjB;AACA,IAAIa,UAAUb,QAAQ,iBAAR,CAAd;;AAEAA,QAAQ,QAAR,EAAkBc,IAAlB;;AAEAR,SAASS,OAAT,CAAiBZ,QAAQC,GAAR,CAAYY,SAA7B,EAAwC,EAACC,gBAAgB,IAAjB,EAAxC,E,CAAgE;;AAEhEjB,QAAQ,sBAAR,EAAgCS,QAAhC;;AAEAR,IAAIiB,GAAJ,CAAQP,OAAO,KAAP,CAAR;AACA;AACAV,IAAIiB,GAAJ,CAAQN,WAAWO,UAAX,CAAsB,EAAEC,UAAU,IAAZ,EAAtB,CAAR;AACAnB,IAAIiB,GAAJ,CAAQ,SAAR,EAAmBnB,QAAQsB,MAAR,CAAeC,YAAY,SAA3B,CAAnB;;AAEArB,IAAIsB,GAAJ,CAAQ,OAAR,EAAiBD,YAAY,QAA7B,E,CAAuC;AACvCrB,IAAIsB,GAAJ,CAAQ,aAAR,EAAuB,KAAvB;;AAEAtB,IAAIiB,GAAJ,CAAQL,QAAQ;AACdW,UAAQ,gBADM;AAEdC,UAAQ,KAFM;AAGfC,qBAAmB;AAHJ,CAAR,CAAR;AAKAzB,IAAIiB,GAAJ,CAAQT,SAASkB,UAAT,EAAR;AACA1B,IAAIiB,GAAJ,CAAQT,SAASI,OAAT,EAAR;AACAZ,IAAIiB,GAAJ,CAAQR,OAAR;;AAEAV,QAAQ,iBAAR,EAA2BC,GAA3B,EAAgCQ,QAAhC;;AAEAR,IAAI2B,MAAJ,CAAW1B,IAAX",
+  "file": "server.js",
+  "sourceRoot": "../src",
+  "sourcesContent": [
+    "var express  = require('express')\r\nvar app = express()\r\nvar port   = process.env.PORT || 3000\r\nvar mongoose = require('mongoose')\r\n  mongoose.Promise = global.Promise\r\nvar passport = require('passport')\r\nvar flash  = require('connect-flash')\r\n\r\nvar morgan = require('morgan')\r\nvar bodyParser = require('body-parser')\r\nvar session = require('express-session')\r\n\r\nrequire(\"dotenv\").load()\r\n\r\nmongoose.connect(process.env.MONGO_URI, {useMongoClient: true}) // mongoose >= 4.11.0 requires the 'useMongoClient' option\r\n\r\nrequire('./config/passport.js')(passport)\r\n\r\napp.use(morgan('dev'))\r\n// app.use(bodyParser.json())\r\napp.use(bodyParser.urlencoded({ extended: true }))\r\napp.use('/public', express.static(__dirname + '/public'))\r\n\r\napp.set(\"views\", __dirname + \"/views\") //don't need 'path' module to join paths correctly\r\napp.set('view engine', 'ejs')\r\n\r\napp.use(session({\r\n  secret: 'tradathonathon',\r\n  resave: false,\r\n\tsaveUninitialized: true\r\n}))\r\napp.use(passport.initialize())\r\napp.use(passport.session())\r\napp.use(flash())\r\n\r\nrequire('./app/routes.js')(app, passport)\r\n\r\napp.listen(port)\r\n"
+  ]
+}

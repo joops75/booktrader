@@ -1,0 +1,36 @@
+{
+  "name": "book_trader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "engines": {
+    "npm": "3.10.10",
+    "node": "6.11.1"
+  },
+  "scripts": {
+    "start": "nodemon src/server.js",
+    "sass": "node-sass -w src/public/sass/ -o src/public/css/",
+    "compile": "babel-compile -p env -p react src:compiled"
+  },
+  "author": "Simon Cooper",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.2",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^4.0.0",
+    "ejs": "^2.5.7",
+    "express": "^4.15.3",
+    "express-session": "^1.15.5",
+    "mongoose": "^4.11.5",
+    "morgan": "^1.8.2",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-compile": "^2.0.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1"
+  }
+}

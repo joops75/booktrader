@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Book Trader</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Mukta+Mahee" rel="stylesheet">
+    <link href="/public/css/books.css" rel="stylesheet" type="text/css">
+    <!-- <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/react/15.5.4/react.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/react/15.5.4/react-dom.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="frame" style="padding-bottom:0px;">
+      <div class="page" style="padding-bottom:0px;">
+        <% if (page === 'searchBooks') { %>
+          <h1><span class="fa fa-search"></span> Search Books</h1>
+        <% } %>
+        <% if (page === 'myBooks') { %>
+          <h1><span class="fa fa-book"></span> My Books</h1>
+        <% } %>
+        <% if (page === 'myRequestsAndBorrowings') { %>
+          <h1><span class="fa fa-bookmark"></span> My Requests/Borrowings</h1>
+        <% } %>
+        <% if (page !== 'searchBooks') { %>
+          <a href="/searchBooks" class="btn btn-default btn-sm">Search Books</a>
+        <% } %>
+        <% if (page !== 'myBooks') { %>
+          <a href="/myBooks" class="btn btn-default btn-sm">My Books</a>
+        <% } %>
+        <% if (page !== 'myRequestsAndBorrowings') { %>
+          <a href="/myRequestsAndBorrowings" class="btn btn-default btn-sm">My Requests/Borrowings</a>
+        <% } %>
+        <a href="/profile" class="btn btn-default btn-sm">Profile</a>
+        <a href="/settings" class="btn btn-default btn-sm">Settings</a>
+        <a href="/password" class="btn btn-default btn-sm">Change Password</a>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+      </div>
+    </div>
+    <script>
+      var username = <%- JSON.stringify(username) %>
+      var city = <%- JSON.stringify(city) %>
+      var state = <%- JSON.stringify(state) %>
+      var country = <%- JSON.stringify(country) %>
+    </script>
+    <div id="target"></div>
+    <script type="text/babel" src="/public/javascripts/books-babel.js"></script>
+  </body>
+</html>

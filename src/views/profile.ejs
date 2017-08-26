@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Book Trader</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Mukta+Mahee" rel="stylesheet">
+    <link href="/public/css/books.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="smallFrame">
+      <div class="smallPage">
+        <h1><span class="fa fa-info-circle"></span> Profile</h1>
+        <a href="/searchBooks" class="btn btn-default btn-sm">Search books</a>
+        <a href="/myBooks" class="btn btn-default btn-sm">My books</a>
+        <a href="/myRequestsAndBorrowings" class="btn btn-default btn-sm">My Requests/Borrowings</a>
+        <a href="/settings" class="btn btn-default btn-sm">Settings</a>
+        <a href="/password" class="btn btn-default btn-sm">Change Password</a>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+        <div class="smallFormBox">
+          <h3><span class="fa fa-user"></span> <%= user.local.username %></h3>
+            <p>
+              <strong>Name</strong>: <%= user.local.firstName %> <%= user.local.lastName %><br>
+              <strong>City</strong>: <%= user.local.city %><br>
+              <strong>State</strong>: <%= user.local.state %><br>
+              <strong>Country</strong>: <%= user.local.country %><br>
+              <strong>Contact Email</strong>: <%= user.local.email %>
+            </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

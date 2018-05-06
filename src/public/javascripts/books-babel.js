@@ -148,7 +148,7 @@ class DisplayBooks extends React.Component {
     })
   }
   callApi(isbn) {
-    var src = "https://openlibrary.org/api/books?bibkeys=ISBN:" + isbn + "&jscmd=data&callback=ApiResponse"
+    var src = "https://openlibrary.org/api/books?bibkeys=ISBN:" + isbn + "&jscmd=data&format=json&callback=ApiResponse"
     $('<script>').attr({'id': 'callApi', 'src': src}).appendTo('head') // can append to head or body, after which api is automatically called
     $('#callApi').remove()
   }

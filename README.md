@@ -28,11 +28,11 @@ Ideally this should be modularised with the use of a build tool such as webpack.
 The CSS files were created by first writing SASS code, and then compiling it with the globally installed node-sass 
 package via the command 'npm run sass'.
 
-In development mode, files are served via the '/src' directory which uses the in-browser babel transformer to compile 
-jsx and es6 code. A production build is made by running 'npm run compile', which uses the babel-compile package and 
-stores files in '/compiled'. The in-browser babel transformer cdn can then be removed from '/compiled/public/stocks.html 
-and the body's script tag type changed from 'text/babel' to 'text/javascript'. The compiled files can then be served by 
-running 'npm run serve', or 'node compiled/server.js'.
+In development mode, files are served via the '/src' directory which features a 'books.ejs' file that runs an in-browser
+babel transformer to compile jsx and es6 code. A production build is made by running 'npm run compile', which uses the 
+babel-compile package and stores files in '/compiled'. The in-browser babel transformer cdn can then be removed from 
+'/compiled/views/books.ejs and the body's script tag type changed from 'text/babel' to 'text/javascript'. The compiled 
+files can then be served by running 'node compiled/server.js'.
 
 Technologies used in this project:
 * node
